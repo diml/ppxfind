@@ -34,12 +34,12 @@ let setup_external_ppxs pkgs =
          package_property preds pkg "ppxopt"))
   in
   let ppxopts =
-    List.concat_map pkgs ~f:(fun (pkg, dir, _ppx, ppxopt) ->
+    List.concat_map pkgs ~f:(fun (_pkg, dir, _ppx, ppxopt) ->
       match ppxopt with
       | None -> []
       | Some ppxopt ->
         List.concat_map (split_words ppxopt) ~f:(fun opt ->
-          match String.split_on_char ',' opt with
+          match String.split_on_char ~sep:',' opt with
           | pkg' :: (_ :: _ as opts) ->
             List.map opts ~f:(fun opt ->
               (pkg', Findlib.resolve_path opt ~base:dir ~explicit:true))
@@ -78,7 +78,7 @@ let main () =
   in
   let usage = "ppxfind [options] ppx1,ppx2,... [ppx-options] [file]" in
   let anon pkgs =
-    let pkgs = String.split_on_char ',' pkgs in
+    let pkgs = String.split_on_char ~sep:',' pkgs in
 
     if not !legacy then begin
       init_findlib ["ppx_driver"];
