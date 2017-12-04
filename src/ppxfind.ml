@@ -1,3 +1,5 @@
+let split_on_char ~sep = String.split_on_char sep
+
 open StdLabels
 
 let linked_in = ["findlib.dynload"; "dynlink"; "ocaml-migrate-parsetree"; "compiler-libs.common"; "str"]
@@ -39,7 +41,7 @@ let setup_external_ppxs pkgs =
       | None -> []
       | Some ppxopt ->
         List.concat_map (split_words ppxopt) ~f:(fun opt ->
-          match String.split_on_char ~sep:',' opt with
+          match split_on_char ~sep:',' opt with
           | pkg' :: (_ :: _ as opts) ->
             List.map opts ~f:(fun opt ->
               (pkg', Findlib.resolve_path opt ~base:dir ~explicit:true))
@@ -78,7 +80,7 @@ let main () =
   in
   let usage = "ppxfind [options] ppx1,ppx2,... [ppx-options] [file]" in
   let anon pkgs =
-    let pkgs = String.split_on_char ~sep:',' pkgs in
+    let pkgs = split_on_char ~sep:',' pkgs in
 
     if not !legacy then begin
       init_findlib ["ppx_driver"];
