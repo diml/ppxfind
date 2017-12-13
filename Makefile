@@ -24,3 +24,7 @@ test:
 .PHONY: clean
 clean:
 	jbuilder clean
+
+.PHONY: all-supported-ocaml-versions
+all-supported-ocaml-versions:
+	jbuilder build --workspace jbuild-workspace.dev
