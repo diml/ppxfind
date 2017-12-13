@@ -1,6 +1,16 @@
-let split_on_char ~sep = String.split_on_char sep
-
 open StdLabels
+
+let split_on_char ~sep s =
+  let open String in
+  let r = ref [] in
+  let j = ref (length s) in
+  for i = length s - 1 downto 0 do
+    if unsafe_get s i = sep then begin
+      r := sub s (i + 1) (!j - i - 1) :: !r;
+      j := i
+    end
+  done;
+  sub s 0 !j :: !r
 
 let linked_in = ["findlib.dynload"; "dynlink"; "ocaml-migrate-parsetree"; "compiler-libs.common"; "str"]
 
