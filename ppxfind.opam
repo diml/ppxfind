@@ -11,5 +11,7 @@ build: [
 depends: [
   "jbuilder" {build & >= "1.0+beta16"}
   "ocaml-migrate-parsetree"
+  "ocamlfind"
 ]
 available: [ ocaml-version >= "4.02.3" ]
+conflicts: [ "dune" {= "1.2.0" | = "1.2.1"} ]
