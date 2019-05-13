@@ -1,4 +1,4 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "jeremie@dimino.org"
 authors: ["Jérémie Dimino"]
 license: "BSD3"
@@ -6,12 +6,17 @@ homepage: "https://github.com/diml/ppxfind"
 bug-reports: "https://github.com/diml/ppxfind/issues"
 dev-repo: "git://github.com/diml/ppxfind.git"
 build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["dune" "build" "-p" name "-j" jobs]
 ]
 depends: [
-  "jbuilder" {build & >= "1.0+beta16"}
+  "dune" {build & >= "1.0"}
   "ocaml-migrate-parsetree"
   "ocamlfind"
 ]
 available: [ ocaml-version >= "4.02.3" ]
 conflicts: [ "dune" {= "1.2.0" | = "1.2.1"} ]
+synopsis: "ocamlfind ppx tool"
+description: """
+Ppxfind is a small command line tool that among other things allows
+to use old style ppx rewriters with jbuilder.
+"""
