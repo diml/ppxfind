@@ -103,8 +103,15 @@ let main () =
     end;
 
     (* Chain to omp *)
-    Sys.argv.(!Arg.current) <- Sys.argv.(0);
-    Migrate_parsetree.Driver.run_main ()
+    let argv =
+      Array.sub
+        Sys.argv
+        ~pos:!Arg.current
+        ~len:(Array.length Sys.argv - !Arg.current)
+    in
+    argv.(0) <- Sys.argv.(0);
+    Migrate_parsetree.Driver.run_main ~argv ();
+    exit 0
   in
   Arg.parse args anon usage;
   prerr_endline "ppxfind: no packages given";
