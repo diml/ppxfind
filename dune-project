@@ -12,7 +12,7 @@
 (package
  (name ppxfind)
  (depends
-  (ocaml-migrate-parsetree (>= "1.6.0"))
+   ocaml-migrate-parsetree
    ocamlfind
   (ocaml (>= "4.02.3")))
  (conflicts (dune (and (>= 1.2) (<= 1.2.1))))
