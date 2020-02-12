@@ -110,7 +110,8 @@ let main () =
         ~len:(Array.length Sys.argv - !Arg.current)
     in
     argv.(0) <- Sys.argv.(0);
-    Migrate_parsetree.Driver.run_main ~argv ()
+    ignore (Migrate_parsetree.Driver.run_main ~argv ());
+    exit 0
   in
   Arg.parse args anon usage;
   prerr_endline "ppxfind: no packages given";
