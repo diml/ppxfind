@@ -15,7 +15,7 @@
    ocaml-migrate-parsetree
    ocamlfind
   (ocaml (>= "4.02.3")))
- (conflicts (dune (and (>= 1.2) (<= 1.2.1))))
+ (conflicts (dune (or (= 1.2) (= 1.2.1))))
  (description "\
 Ppxfind is a small command line tool that among other things allows
 to use old style ppx rewriters with jbuilder.
