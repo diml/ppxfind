@@ -1,3 +1,7 @@
+# 1.4
+
+- Fix compatibility with ocaml-migrate-parsetree >= 1.6.0
+
 # 1.3
 
 - Fix compilation warnings under 4.02 (#5, @ELLIOTTCABLE)
