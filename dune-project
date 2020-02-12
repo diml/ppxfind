@@ -1,2 +1,23 @@
-(lang dune 1.0)
+(lang dune 2.0)
 (name ppxfind)
+
+(license BSD3)
+(maintainers "Jérémie Dimino <jeremie@dimino.org>")
+(authors "Jérémie Dimino <jeremie@dimino.org>")
+(source (github diml/ppxfind))
+(documentation https://diml.github.io/ppxfind/)
+
+(generate_opam_files)
+
+(package
+ (name ppxfind)
+ (depends
+  (ocaml-migrate-parsetree (>= "1.6.0"))
+   ocamlfind
+  (ocaml (>= "4.02.3")))
+ (conflicts (dune (and (>= 1.2) (<= 1.2.1))))
+ (description "\
+Ppxfind is a small command line tool that among other things allows
+to use old style ppx rewriters with jbuilder.
+"))
+
