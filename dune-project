@@ -15,7 +15,6 @@
    ocaml-migrate-parsetree
    ocamlfind
   (ocaml (>= "4.02.3")))
- (conflicts (dune (or (= 1.2) (= 1.2.1))))
  (synopsis "Tool combining ocamlfind and ppx")
  (description "\
 Ppxfind is a small command line tool that among other things allows
